@@ -1,0 +1,62 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+
+<!-- Main Section -->
+<main class="recipes">
+    <section class="hero-section text-center">
+      <div class="container container--narrow">
+        <div class="hero-section__box">
+          <h2>Search for <span>recipes</span></h2>
+        </div>
+
+        <div class="hero-section__search">
+          <form class="form" action="#" method="get">
+            <div class="form__field">
+              <label for="formInput#search">Search By recipes </label>
+              <input class="input input--text" id="formInput#search" type="text" name="text"
+                placeholder="Search by recipe Title" />
+            </div>
+
+            <input class="btn btn--sub btn--lg" type="submit" value="Search" />
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- Search Result: DevList -->
+    <section class="recipesList">
+      <div class="container">
+        <div class="grid grid--three">
+            {% for recipe in recipes %}
+          <div class="column">
+            <div class="card recipe">
+              <a href="{% url 'recipe' recipe.id %}" class="recipe">
+                <img class="recipe__thumbnail" src="{{recipe.featured_image.url}}" alt="recipe thumbnail" />
+                <div class="card__body">
+                  <h3 class="recipe__title">{{recipe.title}}</h3>
+                  <p><a class="recipe__author" href="{% url 'user-profile' recipe.owner_id %}">By {{recipe.owner.name}}</a></p>
+                  <p class="recipe--rating">
+                    <span style="font-weight: bold;">{{recipe.vote_ratio}}%</span> Positive
+                    Feedback ({{recipe.vote_total}}) Vote{{recipe.vote_total|pluralize:"s"}}
+                  </p>
+                  <div class="recipe__tags">
+                    {% for tag in recipe.tags.all %}
+                    <span class="tag tag--pill tag--main">
+                      <small>{{tag}}</small>
+                    </span>
+                    {% endfor %}
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    
+  </main>
+
+{% endblock content%}
