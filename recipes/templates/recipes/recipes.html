@@ -8,15 +8,15 @@
     <section class="hero-section text-center">
       <div class="container container--narrow">
         <div class="hero-section__box">
-          <h2>Search for <span>recipes</span></h2>
+          <h2>Search for <span>Recipes</span></h2>
         </div>
 
         <div class="hero-section__search">
-          <form class="form" action="#" method="get">
+          <form id="searchForm" class="form" action="{% url 'recipes' %}" method="get">
             <div class="form__field">
-              <label for="formInput#search">Search By recipes </label>
-              <input class="input input--text" id="formInput#search" type="text" name="text"
-                placeholder="Search by recipe Title" />
+              <label for="formInput#search">Search By Recipes </label>
+              <input class="input input--text" id="formInput#search" type="text" name="search_query"
+                placeholder="Search by Recipe Title" value="{{search_query}}" />
             </div>
 
             <input class="btn btn--sub btn--lg" type="submit" value="Search" />

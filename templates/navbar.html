@@ -15,8 +15,8 @@
           <li class="header__menuItem"><a href="{% url 'profiles' %}">Contributors</a></li>
           <li class="header__menuItem"><a href="{% url 'recipes'%}">Recipes</a></li>
           {% if request.user.is_authenticated %}
-          <li class="header__menuItem"><a href="">Inbox</a></li>
-          <li class="header__menuItem"><a href="{% url 'add-recipe' %}">Add recipe</a></li>
+          <li class="header__menuItem"><a href="{% url 'inbox' %}">Inbox</a></li>
+          <li class="header__menuItem"><a href="{% url 'account' %}">Account</a></li>
           <li class="header__menuItem"><a href="{% url 'logout' %}"  class="btn btn--sub">Logout</a></li>
           {% else %}
           <li class="header__menuItem"><a href="{% url 'login' %}"  class="btn btn--sub">Login/Signup</a></li>
