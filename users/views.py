@@ -21,6 +21,14 @@ def registerUser(request):
     if request.method == "POST":
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
+            email = form.cleaned_data['email']
+
+            # if User.objects.filter(email=email).exists():
+            #     # If email already exists, show an error message
+            #     messages.error(request, 'This email address is already registered !')
+            #     return redirect('register')
+
+
             user = form.save(commit=False)
             user.username = user.username.lower()
             user.save()
