@@ -8,13 +8,15 @@ class RecipeForm(ModelForm):
         fields = [
             'title',
             'featured_image',
-            'description',              #ADD COOKING TIME HERE
+            'description',              
             'ingredients',
             'steps',
             'tags',
         ]
         widgets = {
             'tags':forms.CheckboxSelectMultiple(),
+            'ingredients':forms.Textarea(attrs={'rows':20}),
+            'steps':forms.Textarea(attrs={'rows':20})
         }
 
     def __init__(self, *args, **kwargs):
