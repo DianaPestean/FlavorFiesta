@@ -1,3 +1,5 @@
+<!-- Login/Register form made so it can be used in both scenarios -->
+
 {% extends 'main.html' %}
 {% load static %}
 {% block content %}
@@ -24,10 +26,6 @@
           <div class="form__field">
             <label for="formInput#text">{{ field.label }}</label>
             {{ field }}
-
-            <!-- {% if field.help_text %}
-            <small>{{field.help_text}}</small>
-            {% endif %} -->
 
             {% for error in field.errors %}
             <p style="color: red;">{{error}}</p>
@@ -60,7 +58,7 @@
           <img src="{% static 'images/icon.svg' %}" alt="icon" />
         </a>
         <h3>Account Login</h3>
-        <p>Hello Developer, Welcome Back!</p>
+        <p>Hello Contributor, Welcome Back!</p>
       </div>
 
       <form method="POST" action="" class="form auth__form">
