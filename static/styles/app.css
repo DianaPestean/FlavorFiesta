@@ -167,6 +167,38 @@ img {
 }
 
 /*=======================
+  Footer Section
+========================*/
+
+footer {
+  background-color: var(--color-sub);
+  z-index: 2;
+  position: bottom;
+ }
+
+ .copyright {
+  color: var(--color-light);
+  font-weight: 300;
+}
+
+.footerItem {
+  color:var(--color-sub-lighter);
+}
+
+.footerSubItem {
+  color:var(--color-sub-lighter);
+  font-size:smaller;
+}
+
+footer > .container {
+  padding: 40px;
+  display:flex;
+  align-items: top;
+  justify-content:space-between;
+ }
+
+
+/*=======================
   Hero Section
 ========================*/
 
@@ -847,27 +879,4 @@ img {
   margin-top: 2rem;
 }
 
-.copyright {
-  color: var(--color-light);
-  font-weight: 300;
-}
 
-.footerItem {
-  color:var(--color-sub-lighter);
-}
-
-.footerSubItem {
-  color:var(--color-sub-lighter);
-  font-size:smaller;
-}
-
-footer > .container {
-  padding: 40px;
-  display:flex;
-  align-items: top;
-  justify-content:space-between;
- }
-
-footer {
-  background-color: var(--color-sub);
- }

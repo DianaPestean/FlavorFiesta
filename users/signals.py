@@ -27,7 +27,7 @@ def updateUser(sender, instance, created, **kwargs):
     user = profile.user
     
     if created == False:
-        user.first_name = profile.name
+        user.first_name = profile.name  # Comment if error when adding username to superuser
         user.username = profile.username
         user.email = profile.email
         user.save()
