@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 40%;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 80px;
+            border-radius: 10px;
+        }
+        .reply {
+            font-size: 16px;
+            color: #444;
+            margin-bottom: 20px;
+        }
+        .signature {
+            font-size: 15px;
+            color: #a01b93;
+        }
+        .centered-image {
+            display: block;
+            margin: 0 auto;
+            position: absolute;
+            top: 40px; /* Adjusted to 0 */
+            left: 50%;
+            transform: translate(-50%, -50%) scale(2); /* Add the scale function */
+            width: 80px; /* Define the width */
+            height: 80px; /* Define the height */
+        }
+    </style>
+    <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+{#        <a target="_blank" href={{link_app}}>#}
+{#        <img class="centered-image" src="{% static 'images/logo.svg' %}">#}
+{#        </a>#}
+        <h2>Welcome to Flavor Fiesta !</h2>
+        <p class="reply">🖐🏻 Hey {{ welcome_user }},</p>
+        <p class="reply">We're so glad you're here! Thanks for joining us.</p>
+        <p class="reply">Welcome to our delicious community! 🍽️ Get ready to embark on a culinary adventure with mouthwatering recipes, cooking tips, and a sprinkle of foodie inspiration. Let your taste buds dance and your kitchen come alive. Happy cooking!</p>
+        <p class="reply">Have fun!</p>
+        <p class="signature">- Flavor Fiesta Team</p>
+    </div>
+</body>
+</html>
+

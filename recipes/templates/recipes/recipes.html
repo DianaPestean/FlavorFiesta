@@ -1,0 +1,72 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+
+<main class="recipes">
+    <section class="hero-section text-center">
+      <div class="container container--narrow">
+        <div class="hero-section__box">
+          <h2>Search for <span>Recipes</span></h2>
+        </div>
+
+        <div class="hero-section__search">
+          <form id="searchForm" class="form" action="{% url 'recipes' %}" method="get">
+            <div class="form__field">
+              <label for="formInput#search">Search By Recipes </label>
+              <input class="input input--text" id="formInput#search" type="text" name="search_query"
+                placeholder="Search by Recipe Title or Tags" value="{{search_query}}" />
+            </div>
+
+            <input class="btn btn--sub btn--lg" type="submit" value="Search" />
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- Search Result: Recipes -->
+    <section class="recipesList">
+      <div class="container">
+        <div class="grid grid--three">
+            {% for recipe in recipes %}
+          <div class="column">
+            <div class="card recipe">
+              <a href="{% url 'recipe' recipe.id %}" class="recipe">
+                <img class="recipe--thumbnail" src="{{recipe.featured_image.url}}" alt="recipe thumbnail" />
+                <div class="card__body">
+                  <h3 class="recipe__title">{{recipe.title}}</h3>
+                  <p><a class="recipe__author" href="{% url 'user-profile' recipe.owner_id %}">By {{recipe.owner.name}}</a></p>
+                  <p class="recipe--rating">
+                    <span style="font-weight: bold;">{{recipe.vote_ratio}}%</span> Positive
+                    Feedback ({{recipe.vote_total}}) Vote{{recipe.vote_total|pluralize:"s"}}
+                  </p>
+                  <div class="recipe__tags">
+                    {% for tag in recipe.tags.all %}
+                    <span class="tag tag--pill tag--main" onclick="performSearch(this)">
+                      <small>{{tag}}</small>
+                    </span>
+                  
+                    {% endfor %}
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    {% include 'pagination.html' with queryset=recipes custom_range=custom_range %}
+    
+  </main>
+  <script>
+    function performSearch(element) {
+      // Get the {{tag}} value from the clicked span
+      var tagValue = $(element).find('small').text();
+
+      // Redirect to the search page with the constructed query
+      window.location.href = '/?search_query=' + encodeURIComponent(tagValue);
+    }
+  </script>
+
+{% endblock content%}
