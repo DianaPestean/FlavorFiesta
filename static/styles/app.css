@@ -25,6 +25,12 @@ img {
   margin: 0 auto;
 }
 
+body {
+  min-height: 100vh;
+  display: flex;
+    flex-direction: column;
+}
+
 /*=======================
   Header Section
 ========================*/
@@ -173,7 +179,8 @@ img {
 footer {
   background-color: var(--color-sub);
   z-index: 2;
-  position: bottom;
+  position: relative;
+  margin-top: auto;
  }
 
  .copyright {
