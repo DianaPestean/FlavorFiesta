@@ -78,6 +78,22 @@ WSGI_APPLICATION = 'fiesta.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+
+#Diana Database, dummy data to be added
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'fiesta',
+#         'USER': 'postgres',
+#         'PASSWORD': 'Good morning girls!',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+
+# Development Database, uncomment the next session for development purposes
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',

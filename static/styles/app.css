@@ -861,13 +861,13 @@ img {
   font-size:smaller;
 }
 
- footer > .container {
+footer > .container {
   padding: 40px;
   display:flex;
   align-items: top;
   justify-content:space-between;
  }
 
- footer {
+footer {
   background-color: var(--color-sub);
  }
