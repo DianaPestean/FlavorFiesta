@@ -3,7 +3,6 @@
 
 {% block content %}
 
-<!-- Main Section -->
 <main class="profile my-md">
     <div class="container">
       <div class="layout">
@@ -41,7 +40,7 @@
                 {% endif %}
               </ul>
               {% if request.user.profile.id != profile.id %}
-              <a href="{% url 'create-message' profile.id %}" class="btn btn--sub btn--lg">Send Message </a>
+              <a href="{% url 'create-message' profile.id %}" class="btn btn--sub btn--lg"><i class="bi bi-send"></i><br>Send Message </a>
               {% endif %}
             </div>
           </div>
@@ -89,7 +88,7 @@
                       </p>
                       <div class="recipe__tags">
                         {% for tag in recipe.tags.all %}
-                        <span class="tag tag--pill tag--main">
+                        <span class="tag tag--pill tag--main searchable" onclick="performSearch(this)">
                           <small>{{tag}}</small>
                         </span>
                         {% endfor %}
@@ -107,4 +106,15 @@
       </div>
     </div>
   </main>
+
+  <script>
+    function performSearch(element) {
+      // Get the {{tag}} value from the clicked span
+      var tagValue = $(element).find('small').text();
+
+      // Redirect to the search page with the constructed query
+      window.location.href = '/?search_query=' + encodeURIComponent(tagValue);
+    }
+  </script>
+  
 {% endblock %}

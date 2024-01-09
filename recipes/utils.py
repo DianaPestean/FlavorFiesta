@@ -28,7 +28,7 @@ def paginateRecipes(request, recipes, results):
         rightIndex = paginator.num_pages
     
     
-    custom_range = range(leftIndex,rightIndex)
+    custom_range = range(leftIndex,rightIndex+1)
 
 
     return custom_range, recipes

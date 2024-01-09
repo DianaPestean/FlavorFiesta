@@ -15,7 +15,7 @@
             <div class="form__field">
               <label for="formInput#search">Search By Recipes </label>
               <input class="input input--text" id="formInput#search" type="text" name="search_query"
-                placeholder="Search by Recipe Title" value="{{search_query}}" />
+                placeholder="Search by Recipe Title or Tags" value="{{search_query}}" />
             </div>
 
             <input class="btn btn--sub btn--lg" type="submit" value="Search" />
@@ -23,7 +23,7 @@
         </div>
       </div>
     </section>
-    <!-- Search Result: Contributors -->
+    <!-- Search Result: Recipes -->
     <section class="recipesList">
       <div class="container">
         <div class="grid grid--three">
@@ -31,7 +31,7 @@
           <div class="column">
             <div class="card recipe">
               <a href="{% url 'recipe' recipe.id %}" class="recipe">
-                <img class="recipe__thumbnail" src="{{recipe.featured_image.url}}" alt="recipe thumbnail" />
+                <img class="recipe--thumbnail" src="{{recipe.featured_image.url}}" alt="recipe thumbnail" />
                 <div class="card__body">
                   <h3 class="recipe__title">{{recipe.title}}</h3>
                   <p><a class="recipe__author" href="{% url 'user-profile' recipe.owner_id %}">By {{recipe.owner.name}}</a></p>
@@ -41,9 +41,10 @@
                   </p>
                   <div class="recipe__tags">
                     {% for tag in recipe.tags.all %}
-                    <span class="tag tag--pill tag--main">
+                    <span class="tag tag--pill tag--main" onclick="performSearch(this)">
                       <small>{{tag}}</small>
                     </span>
+                  
                     {% endfor %}
                   </div>
                 </div>
@@ -55,7 +56,17 @@
       </div>
     </section>
 
+    {% include 'pagination.html' with queryset=recipes custom_range=custom_range %}
     
   </main>
+  <script>
+    function performSearch(element) {
+      // Get the {{tag}} value from the clicked span
+      var tagValue = $(element).find('small').text();
+
+      // Redirect to the search page with the constructed query
+      window.location.href = '/?search_query=' + encodeURIComponent(tagValue);
+    }
+  </script>
 
 {% endblock content%}

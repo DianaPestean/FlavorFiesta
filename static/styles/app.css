@@ -1,5 +1,5 @@
 :root {
-  --color-sub: #2d2d39;
+  --color-sub: #3c2f2f;
 }
 
 .btn--sub {
@@ -14,8 +14,8 @@ img {
   width: 100%;
 }
 
-.tag > i.im {
-  font-size: 1.5rem;
+.tag > i.bi {
+  font-size: 1.6rem;
   margin-right: 0.5rem;
 }
 
@@ -42,13 +42,13 @@ img {
 }
 
 .header__logo > img {
-  height: 3.8rem;
+  height: 4rem;
 }
 
 .header__nav > ul {
   display: inline-flex;
   align-items: center;
-  list-style: none;
+  list-style:list;
   gap: 6.5rem;
 }
 
@@ -72,6 +72,7 @@ img {
 
 .recipe--thumbnail {
   height: 250px;
+  width: 600px;
   object-fit: cover;
 }
 
@@ -183,7 +184,7 @@ img {
 .hero-section__box > h2,
 .hero-section__box > h2 > span {
   font-size: 4rem;
-  color: var(--color-light);
+  color: var(--color-sub-lighter);
   line-height: 1.3;
   text-transform: uppercase;
 }
@@ -486,7 +487,7 @@ img {
   recipes Page
 ========================*/
 .recipes > .hero-section {
-  background: var(--color-sub-lighter);
+  background: var(--color-sub);
   height: 30vh;
 }
 
@@ -495,12 +496,12 @@ img {
 }
 
 .recipes .hero-section__box > h2 {
-  color: var(--color-sub);
+  color: var(--color-sub-light);
 }
 
 .recipes .hero-section__box > h2 > span {
   font-weight: 700;
-  color: var(--color-sub);
+  color: var(--color-sub-lighter);
 }
 
 .recipesList {
@@ -643,7 +644,7 @@ img {
   position: relative;
   z-index: 1;
   background: transparent;
-  height: 99vh;
+  height: 112vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -696,7 +697,7 @@ img {
 .auth .auth__alternative p {
   font-size: 1.4rem;
   font-weight: 500;
-  color: var(--color-sub-light);
+  color: var(--color-text);
 }
 
 .auth .auth__actions {
@@ -845,3 +846,28 @@ img {
   margin-bottom: 1rem;
   margin-top: 2rem;
 }
+
+.copyright {
+  color: var(--color-light);
+  font-weight: 300;
+}
+
+.footerItem {
+  color:var(--color-sub-lighter);
+}
+
+.footerSubItem {
+  color:var(--color-sub-lighter);
+  font-size:smaller;
+}
+
+ footer > .container {
+  padding: 40px;
+  display:flex;
+  align-items: top;
+  justify-content:space-between;
+ }
+
+ footer {
+  background-color: var(--color-sub);
+ }

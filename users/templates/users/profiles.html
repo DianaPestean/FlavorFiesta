@@ -16,7 +16,7 @@
             <div class="form__field">
               <label for="formInput#search">Search Contributors </label>
               <input class="input input--text" id="formInput#search" type="text" name="search_query"
-                value="{{search_query}}" placeholder="Search by contributor name" />
+                value="{{search_query}}" placeholder="Search by contributor name or skillset" />
             </div>
 
             <input class="btn btn--sub btn--lg" type="submit" value="Search" />
@@ -28,7 +28,9 @@
     <section class="contrlist">
       <div class="container">
         <div class="grid grid--three">
+          
             {% for profile in profiles %}
+            {% if profile.name %}
           <div class="column card">
             <div class="contr">
               <a href="{% url 'user-profile' profile.id %}" class="card__body">
@@ -50,6 +52,7 @@
               </a>
             </div>
           </div>
+          {% endif %}
           {% endfor %}
           
         </div>
