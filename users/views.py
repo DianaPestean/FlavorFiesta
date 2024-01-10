@@ -98,6 +98,15 @@ def logoutUser(request):
     return redirect('login')
 
 
+def deleteAccount(request):
+    user = request.user
+    if request.method == 'POST':
+        user.profile.delete()
+        return redirect('login')
+        messages.success(request, 'Your account has been deleted successfully.')
+    return render(request, 'users/delete_account.html')
+
+
 def profiles(request):
     profiles, search_query = searchProfiles(request)
 

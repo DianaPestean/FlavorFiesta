@@ -7,14 +7,28 @@ from django.contrib import messages
 from .utils import searchRecipes, paginateRecipes
 
 
-
-
 def recipes(request):
     recipes, search_query = searchRecipes(request)
     custom_range, recipes = paginateRecipes(request, recipes, 6)
 
     context = {'recipes': recipes, 'search_query': search_query, 'custom_range': custom_range}
     return render(request, 'recipes/recipes.html', context)
+
+@login_required(login_url="login")
+def createRecipe(request):
+    profile = request.user.profile
+    form = RecipeForm()
+
+    if request.method == "POST":
+        form = RecipeForm(request.POST, request.FILES)
+        if form.is_valid():
+            recipe = form.save(commit=False)
+            recipe.owner = profile
+            recipe.save()
+            return redirect('account')
+    context = {'form': form}
+    return render(request, 'recipes/recipe_form.html', context)
+
 
 def recipe(request, pk):
     recipeObj = Recipe.objects.get(id=pk)
@@ -33,23 +47,6 @@ def recipe(request, pk):
         return redirect('recipe', pk=recipeObj.id)
 
     return render(request, 'recipes/single-recipe.html', {'recipe': recipeObj, 'form': form})
-
-
-@login_required(login_url="login")
-def createRecipe(request):
-    profile = request.user.profile
-    form = RecipeForm()
-
-    if request.method == "POST":
-        form = RecipeForm(request.POST, request.FILES)
-        if form.is_valid():
-            recipe = form.save(commit=False)
-            recipe.owner = profile
-            recipe.save()
-            return redirect('account')
-    context = {'form': form}
-    return render(request, 'recipes/recipe_form.html', context)
-
 
 @login_required(login_url="login")
 def updateRecipe(request, pk):
