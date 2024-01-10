@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 import uuid
+from django.db.models import F
 
 # Create your models here.
 
@@ -25,6 +26,9 @@ class Profile(models.Model):
 
     def __str__(self):
         return str(self.username)
+    
+    class Meta:
+        ordering = ['-name']
 
 
 

@@ -18,7 +18,8 @@
   <title>FlavorFiesta - Find inspiration in the kitchen!</title>
 </head>
 
-<body class="content">
+<body>
+  <div class="content">
     {% include 'navbar.html' %}
 
     {% if messages %}
@@ -32,7 +33,7 @@
     {% block content %}
 
     {% endblock content %}
-
+  </div>
     <footer>
       <div class="container">
         <div>

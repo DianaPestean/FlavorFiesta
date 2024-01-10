@@ -25,10 +25,8 @@ img {
   margin: 0 auto;
 }
 
-body {
-  min-height: 100vh;
-  display: flex;
-    flex-direction: column;
+.content {
+  min-height: 105vh;
 }
 
 /*=======================
@@ -183,7 +181,7 @@ footer {
   margin-top: auto;
  }
 
- .copyright {
+.copyright {
   color: var(--color-light);
   font-weight: 300;
 }

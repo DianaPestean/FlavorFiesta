@@ -21,9 +21,18 @@ def registerUser(request):
     if request.method == "POST":
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save(commit=False)
-            user.username = user.username.lower()
-            user.save()
+            new_username = form.cleaned_data['username']
+            new_email = form.cleaned_data['email']
+
+            if User.objects.exclude(pk=request.user.id).filter(username=new_username).exists():
+                messages.error(request, 'This username is already taken. Please choose a different one.')
+            elif User.objects.exclude(pk=request.user.id).filter(email=new_email).exists():
+                messages.error(request, 'This email address is already in use. Please use log in or reset your password if needed.')
+                return redirect('login')
+            else:
+                user = form.save(commit=False)
+                user.username = user.username.lower()
+                user.save()
 
         ### welcoming email
             my_subject = "🌮 Welcome to Flavor Fiesta !"
@@ -128,9 +137,12 @@ def editAccount(request):
     if request.method == "POST":
         form = ProfileForm(request.POST, request.FILES, instance= profile)
         if form.is_valid():
-            form.save()
-
-            return redirect('account')
+            new_username = form.cleaned_data['username']
+            if User.objects.exclude(pk=request.user.id).filter(username=new_username).exists():
+                messages.error(request, 'This username is already taken. Please choose a different one.')
+            else:
+                form.save()
+                return redirect('account')
 
     context = {'form':form}
     return render(request, 'users/profile_form.html', context)
