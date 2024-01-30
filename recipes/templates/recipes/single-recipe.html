@@ -44,7 +44,7 @@
 
             {% if request.user.profile.id in recipe.reviewers %}
               <p>You have already submitted a review for this recipe</p>
-            {% elif request.user.profile == recipe.owner %}
+            {% elif request.user.profile == recipe.owner  or request.user.profile.is_authenticated %}
               <p>You cannot review your own work</p>
             {% elif request.user.is_authenticated %}
             <form class="form" action="{% url 'recipe' recipe.id %}" method="POST">

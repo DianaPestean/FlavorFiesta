@@ -78,7 +78,7 @@
               <div class="column">
                 <div class="card recipe">
                   <a href="{% url 'recipe' recipe.id %}" class="recipe">
-                    <img class="recipe__thumbnail" src="{{recipe.featured_image.url}}" alt="recipe thumbnail" />
+                    <img class="recipe--thumbnail" src="{{recipe.featured_image.url}}" alt="recipe thumbnail" />
                     <div class="card__body">
                       <h3 class="recipe__title">{{recipe.title}}</h3>
                       <p><a class="recipe__author" href="{% url 'user-profile' recipe.owner_id %}">By {{recipe.owner.name}}</a></p>

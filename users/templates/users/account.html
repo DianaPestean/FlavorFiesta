@@ -78,7 +78,7 @@
             {% for recipe in recipes %}
             <tr>
               <td class="settings__thumbnail">
-                <a href="{% url 'recipe' recipe.id %}"><img src="{{recipe.featured_image.url}}" alt="recipe Thumbnail" /></a>
+                <a href="{% url 'recipe' recipe.id %}"><img  src="{{recipe.featured_image.url}}" alt="recipe Thumbnail" /></a>
               </td>
               <td class="settings__tableInfo">
                 <a href="{% url 'recipe' recipe.id %}">{{recipe.title}}</a>
