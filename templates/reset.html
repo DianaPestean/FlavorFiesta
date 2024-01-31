@@ -40,13 +40,13 @@ It allows them to enter a new password on a new web page. -->
         <div class="formWrapper">
             <h2>Reset Password</h2>
             <br>
-            <p>Please enter your email address to reset your password.</p>
+            <p>Please enter your new password.</p>
             <br>
             <form class="form" method="POST">
 
                 {% csrf_token %}
                 {{form.as_p}}
-                <input class="btn btn--sub btn--lg  my-md" type="submit" value="Send Email" />
+                <input class="btn btn--sub btn--lg  my-md" type="submit" value="Confirm" />
             </form>
         </div>
     </div>
